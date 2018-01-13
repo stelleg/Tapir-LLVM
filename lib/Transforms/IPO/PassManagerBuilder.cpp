@@ -516,7 +516,7 @@ void PassManagerBuilder::populateModulePassManager(
   do {
     RerunAfterTapirLowering =
        !TapirHasBeenLowered && tapirTarget && !PrepareForThinLTO;
-      
+
   // Infer attributes about declarations if possible.
   MPM.add(createInferFunctionAttrsLegacyPass());
 
@@ -657,9 +657,6 @@ void PassManagerBuilder::populateModulePassManager(
   // currently only performed for loops marked with the metadata
   // llvm.loop.distribute=true or when -enable-loop-distribute is specified.
   MPM.add(createLoopDistributePass());
-
-  if (EnableLoopFuse)
-    MPM.add(createLoopFusePass());
 
   MPM.add(createLoopVectorizePass(DisableUnrollLoops, LoopVectorize));
 
