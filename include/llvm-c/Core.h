@@ -3168,10 +3168,6 @@ LLVMValueRef LLVMBuildCatchSwitch(LLVMBuilderRef B, LLVMValueRef ParentPad,
                                   unsigned NumHandlers, const char *Name);
 LLVMValueRef LLVMBuildResume(LLVMBuilderRef B, LLVMValueRef Exn);
 LLVMValueRef LLVMBuildUnreachable(LLVMBuilderRef);
-LLVMValueRef LLVMBuildDetach(LLVMBuilderRef,
-                             LLVMBasicBlockRef Child, LLVMBasicBlockRef Parent);
-LLVMValueRef LLVMBuildReattach(LLVMBuilderRef);
-LLVMValueRef LLVMBuildSync(LLVMBuilderRef, LLVMBasicBlockRef Continue);
 
 /* Add a case to the switch instruction */
 void LLVMAddCase(LLVMValueRef Switch, LLVMValueRef OnVal,
@@ -3381,6 +3377,18 @@ LLVMValueRef LLVMBuildICmp(LLVMBuilderRef, LLVMIntPredicate Op,
 LLVMValueRef LLVMBuildFCmp(LLVMBuilderRef, LLVMRealPredicate Op,
                            LLVMValueRef LHS, LLVMValueRef RHS,
                            const char *Name);
+
+/* Parallel constructs */
+LLVMValueRef LLVMBuildDetach(LLVMBuilderRef B,
+                             LLVMBasicBlockRef DetachBB,
+                             LLVMBasicBlockRef ContinueBB,
+                             LLVMValueRef SyncRegion);
+LLVMValueRef LLVMBuildReattach(LLVMBuilderRef B,
+                               LLVMBasicBlockRef ReattachBB,
+                               LLVMValueRef SyncRegion);
+LLVMValueRef LLVMBuildSync(LLVMBuilderRef B,
+                           LLVMBasicBlockRef ContinueBB,
+                           LLVMValueRef SyncRegion);
 
 /* Miscellaneous instructions */
 LLVMValueRef LLVMBuildPhi(LLVMBuilderRef, LLVMTypeRef Ty, const char *Name);
