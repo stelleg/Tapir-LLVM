@@ -5950,7 +5950,7 @@ static bool pushUpReattaches(BasicBlock *BB) {
         }
       }
     }
-    return true; 
+    return true;
   }
   return false; 
 }
