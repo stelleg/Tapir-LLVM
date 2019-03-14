@@ -1166,8 +1166,7 @@ static uint64_t getRawAttributeMask(Attribute::AttrKind Val) {
   case Attribute::OptForFuzzing:   return 1ULL << 58;
   case Attribute::ShadowCallStack: return 1ULL << 59;
   case Attribute::SanitizeCilk:    return 1ULL << 60;
-  case Attribute::SanitizeCilk:    return 1ULL << 61;
-  case Attribute::Stealable:       return 1ULL << 62;
+  case Attribute::Stealable:       return 1ULL << 61;
   case Attribute::Dereferenceable:
     llvm_unreachable("dereferenceable attribute not supported in raw format");
     break;
